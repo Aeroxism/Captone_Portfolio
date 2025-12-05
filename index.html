@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Capstone Project Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TALA LINK - Capstone Project Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-     <link rel="icon" href="index/qcu.png" type="image/png" />
     <style>
         * {
             margin: 0;
@@ -31,7 +30,6 @@
             color: var(--dark);
             line-height: 1.6;
             font-size: 16px;
-            overflow-x: hidden;
         }
 
         .container {
@@ -772,57 +770,41 @@
                 color: var(--primary);
             }
         }
-
-        /* Prevent zoom on iOS */
-        input, textarea, select {
-            font-size: 16px;
-        }
-        .logo-img {
-    width: 45px;
-    height: 45px;
-    object-fit: contain;
-    margin-right: 10px;
-}
-
     </style>
 </head>
 <body>
     <!-- Header & Navigation -->
-   <header>
-    <div class="container">
-        <div class="header-content">
-            <div class="logo-container">
-                <!-- LOGO IMAGE -->
-                <img src="index/qcu.png" alt="QCU Logo" class="logo-img">
-
-                <!-- LOGO TEXT -->
-                <div class="logo-text">Capstone<span>Portfolio</span></div>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo">TL</div>
+                    <div class="logo-text">TALA<span>LINK</span></div>
+                </div>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="#overview">Overview</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#demo">Demo</a></li>
+                        <li><a href="#pdf">Proposal</a></li>
+                        <li><a href="#objectives">Objectives</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
             </div>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <nav id="mainNav">
-                <ul>
-                    <li><a href="#overview">Overview</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#demo">Demo</a></li>
-                    <li><a href="#pdf">Proposal</a></li>
-                    <li><a href="#objectives">Objectives</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
         </div>
-    </div>
-</header>
-
+    </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Patient Information Management and Medical Personnel Scheduling System</h1>
+            <h1>TALA LINK: Patient Information Management and Medical Personnel Scheduling System</h1>
             <p>A comprehensive web application designed to enhance efficiency in handling patient-related information and streamline scheduling processes for medical personnel in the Pediatrics Department.</p>
             
             <div class="hero-badges">
@@ -910,7 +892,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>System Demo Video</h2>
-                <p>Watch a demonstration of Example system functionalities and user interface</p>
+                <p>Watch a demonstration of TALA LINK system functionalities and user interface</p>
             </div>
             
             <div class="video-container-wrapper">
@@ -923,7 +905,7 @@
             </div>
             
             <div style="margin-top: 25px; text-align: center;">
-                <p><strong>Note:</strong> The video demonstrates the system's key modules including patient registration, AI recommendations, and reporting features.</p>
+                <p><strong>Note:</strong> The video demonstrates the system's key modules including patient registration, scheduling interface, AI recommendations, and reporting features.</p>
             </div>
         </div>
     </section>
@@ -1162,13 +1144,6 @@
                 }
             });
         }
-
-        // Prevent default touch behavior
-        document.addEventListener('touchmove', function(e) {
-            if (e.scale !== 1) {
-                e.preventDefault();
-            }
-        }, { passive: false });
     </script>
 </body>
 </html>
