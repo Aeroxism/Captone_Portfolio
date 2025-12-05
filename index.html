@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Capstone Project Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <link rel="icon" href="index/qcu.png" type="image/png" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --primary: #1a73e8;
+            --primary-dark: #0d47a1;
+            --secondary: #34a853;
+            --accent: #fbbc05;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --gray: #5f6368;
+            --light-gray: #dadce0;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header & Navigation - MOBILE FIRST */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.25);
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        /* Mobile Navigation */
+        .mobile-menu-btn {
+            display: block;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary);
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: background-color 0.2s;
+        }
+
+        .mobile-menu-btn:active {
+            background-color: rgba(26, 115, 232, 0.1);
+        }
+
+        nav {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 20px;
+            transform: translateY(-100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 999;
+            border-top: 1px solid var(--light-gray);
+            max-height: calc(100vh - 70px);
+            overflow-y: auto;
+        }
+
+        nav.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        nav li {
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        nav li:last-child {
+            border-bottom: none;
+        }
+
+        nav a {
+            display: block;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            padding: 16px 0;
+            font-size: 16px;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        nav a:hover,
+        nav a:active {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            display: none;
+        }
+
+        /* Hero Section - Mobile Optimized */
+        .hero {
+            background: linear-gradient(135deg, rgba(26, 115, 232, 0.08), rgba(52, 168, 83, 0.08));
+            padding: 50px 0 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 1.8rem;
+            margin-bottom: 18px;
+            color: var(--primary-dark);
+            line-height: 1.3;
+            font-weight: 700;
+            padding: 0 5px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: var(--gray);
+            max-width: 100%;
+            margin: 0 auto 25px;
+            padding: 0 10px;
+            line-height: 1.5;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-top: 25px;
+            width: 100%;
+        }
+
+        .badge {
+            background-color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 500;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 300px;
+            font-size: 15px;
+        }
+
+        .badge i {
+            color: var(--secondary);
+            font-size: 16px;
+        }
+
+        /* Sections - Mobile Optimized */
+        .section {
+            padding: 50px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+            padding: 0 10px;
+        }
+
+        .section-title h2 {
+            font-size: 1.6rem;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 100%;
+            margin: 0 auto;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Cards and Grids - Mobile Optimized */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .overview-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .overview-card:active {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+
+        .overview-card i {
+            font-size: 36px;
+            color: var(--primary);
+            margin-bottom: 18px;
+        }
+
+        .overview-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .overview-card p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--gray);
+        }
+
+        /* Features Section */
+        .features {
+            background-color: #f8f9fa;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+
+        .feature-item {
+            background-color: white;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary);
+            transition: all 0.2s;
+        }
+
+        .feature-item:active {
+            transform: translateX(2px);
+        }
+
+        .feature-item h4 {
+            font-size: 1.15rem;
+            margin-bottom: 8px;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--gray);
+        }
+
+        /* Demo Video Section - Mobile Optimized */
+        .demo-section {
+            text-align: center;
+        }
+
+        .video-container-wrapper {
+            width: 100%;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+        }
+
+        .demo-section > .container > div:last-child {
+            margin-top: 25px;
+            padding: 0 10px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* PDF Section - Mobile Optimized */
+        .pdf-section {
+            background: linear-gradient(135deg, rgba(251, 188, 5, 0.08), rgba(52, 168, 83, 0.08));
+        }
+
+        .pdf-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+
+        .pdf-preview {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .pdf-icon {
+            font-size: 65px;
+            color: #e74c3c;
+            margin-bottom: 18px;
+        }
+
+        .pdf-info h3 {
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .pdf-details {
+            list-style: none;
+            margin-bottom: 22px;
+            text-align: left;
+        }
+
+        .pdf-details li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--light-gray);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.9rem;
+        }
+
+        .pdf-details li:last-child {
+            border-bottom: none;
+        }
+
+        .pdf-details i {
+            color: var(--primary);
+            width: 18px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--primary);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .download-btn:active {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 115, 232, 0.3);
+        }
+
+        .download-btn i {
+            font-size: 1.1rem;
+        }
+
+        /* Team Section - Mobile Optimized */
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .team-member {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            transition: all 0.2s;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .team-member:active {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        }
+
+        .member-avatar {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e8f0fe, #d2e3fc);
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            color: var(--primary);
+            box-shadow: 0 4px 10px rgba(26, 115, 232, 0.15);
+        }
+
+        .team-member h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .member-role {
+            color: var(--secondary);
+            font-weight: 600;
+            margin: 5px 0 12px;
+            font-size: 0.9rem;
+        }
+
+        .team-member p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--gray);
+        }
+
+        /* Footer - Mobile Optimized */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 25px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 35px;
+            margin-bottom: 35px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .footer-logo span {
+            color: var(--secondary);
+        }
+
+        .footer-about p {
+            color: #bdc1c6;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .footer-links h4,
+        .footer-contact h4 {
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+            color: var(--light-gray);
+            font-weight: 600;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bdc1c6;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+            display: inline-block;
+            padding: 3px 0;
+        }
+
+        .footer-links a:active {
+            color: white;
+        }
+
+        .footer-contact p {
+            margin-bottom: 12px;
+            color: #bdc1c6;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .footer-contact i {
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid #3c4043;
+            color: #9aa0a6;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        /* Media Queries for Larger Screens */
+        @media (min-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-badges {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .badge {
+                width: auto;
+                max-width: none;
+            }
+            
+            .overview-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .download-btn {
+                width: auto;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 0 20px;
+            }
+            
+            .mobile-menu-btn {
+                display: none;
+            }
+            
+            nav {
+                position: static;
+                transform: none;
+                opacity: 1;
+                visibility: visible;
+                padding: 0;
+                box-shadow: none;
+                border: none;
+                max-height: none;
+                overflow: visible;
+                background: transparent;
+                width: auto;
+            }
+            
+            nav ul {
+                flex-direction: row;
+                gap: 25px;
+            }
+            
+            nav li {
+                border-bottom: none;
+            }
+            
+            nav a {
+                padding: 5px 0;
+                font-size: 15px;
+            }
+            
+            nav a::after {
+                display: block;
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background-color: var(--primary);
+                transition: width 0.3s;
+            }
+            
+            nav a:hover::after {
+                width: 100%;
+            }
+            
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .section {
+                padding: 70px 0;
+            }
+            
+            .overview-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .pdf-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .team-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Touch Device Optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .overview-card:hover,
+            .feature-item:hover,
+            .team-member:hover,
+            .download-btn:hover {
+                transform: none;
+            }
+            
+            .overview-card:active,
+            .feature-item:active,
+            .team-member:active,
+            .download-btn:active {
+                transform: translateY(-2px);
+            }
+            
+            nav a:hover {
+                color: inherit;
+            }
+            
+            nav a:active {
+                color: var(--primary);
+            }
+        }
+
+        /* Prevent zoom on iOS */
+        input, textarea, select {
+            font-size: 16px;
+        }
+        .logo-img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    margin-right: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+   <header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo-container">
+                <!-- LOGO IMAGE -->
+                <img src="index/qcu.png" alt="QCU Logo" class="logo-img">
+
+                <!-- LOGO TEXT -->
+                <div class="logo-text">Capstone<span>Portfolio</span></div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#demo">Demo</a></li>
+                    <li><a href="#pdf">Proposal</a></li>
+                    <li><a href="#objectives">Objectives</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Patient Information Management and Medical Personnel Scheduling System</h1>
+            <p>A comprehensive web application designed to enhance efficiency in handling patient-related information and streamline scheduling processes for medical personnel in the Pediatrics Department.</p>
+            
+            <div class="hero-badges">
+                <div class="badge"><i class="fas fa-university"></i> Quezon City University</div>
+                <div class="badge"><i class="fas fa-users"></i> SBIT-4J Capstone Project</div>
+                <div class="badge"><i class="fas fa-calendar"></i> Dec 3, 2025</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section id="overview" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Project Overview</h2>
+                <p>Our system aims to assist medical facilities by improving the management of patient records, personnel schedules, and operational workflows with AI-driven tools.</p>
+            </div>
+            
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <i class="fas fa-hospital-user"></i>
+                    <h3>Patient Information Management</h3>
+                    <p>Centralized and secure system for efficient recording, updating, and retrieval of patient records in the Pediatrics Department.</p>
+                </div>
+                
+                <div class="overview-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Personnel Scheduling System</h3>
+                    <p>Interactive scheduling system that displays department-wide view of assigned shifts for doctors and nurses.</p>
+                </div>
+                
+                <div class="overview-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>AI-Driven Clinical Decision Support</h3>
+                    <p>AI-powered recommendation module that analyzes patient data to provide safe referral recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Key Features</h2>
+                <p>The system integrates multiple modules to address specific needs within the Pediatrics Department</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h4>Patient Queueing System</h4>
+                    <p>Efficiently manage patient flow by organizing waiting lists and bed assignment.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <h4>Risk Classification Module</h4>
+                    <p>Classifies patients' conditions into low, moderate, and high-risk levels for prioritization.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <h4>Chatbot for Assistance & Queries</h4>
+                    <p>AI-powered chatbot to assist with common queries and provide information.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <h4>Medical Certificates / Slip Generation</h4>
+                    <p>Automated generation of medical certificates and slips with proper formatting.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <h4>Role-Based Access Control</h4>
+                    <p>Secure access control for nurses, doctors, and administrators with appropriate permissions.</p>
+                </div>
+                
+                <div class="feature-item">
+                    <h4>AI Specialist Recommendation</h4>
+                    <p>Analyzes patient laboratory results and symptoms to provide referral recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Video Section -->
+    <section id="demo" class="section demo-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>System Demo Video</h2>
+                <p>Watch a demonstration of Example system functionalities and user interface</p>
+            </div>
+            
+            <div class="video-container-wrapper">
+                <div class="video-container">
+                    <video controls playsinline>
+                        <source src="index/System.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+            
+            <div style="margin-top: 25px; text-align: center;">
+                <p><strong>Note:</strong> The video demonstrates the system's key modules including patient registration, AI recommendations, and reporting features.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PDF Documentation Section -->
+    <section id="pdf" class="section pdf-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Project Proposal</h2>
+                <p>Download the complete project proposal document for detailed information</p>
+            </div>
+            
+            <div class="pdf-container">
+                <div class="pdf-preview">
+                    <div class="pdf-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>Project Proposal Document</h3>
+                    <p>Complete capstone project proposal submitted for approval</p>
+                    
+                    <a href="index/TALA LINK_PORTFOLIO.pdf" class="download-btn" download>
+                        <i class="fas fa-download"></i> Download Proposal
+                    </a>
+                </div>
+                
+                <div class="pdf-info">
+                    <h3>Document Contents</h3>
+                    <ul class="pdf-details">
+                        <li><i class="fas fa-file-alt"></i> Complete Project Proposal Document</li>
+                        <li><i class="fas fa-bullseye"></i> Project Objectives & Goals</li>
+                        <li><i class="fas fa-clipboard-list"></i> Problem Statement & Background</li>
+                        <li><i class="fas fa-cogs"></i> Proposed System Features</li>
+                        <li><i class="fas fa-chart-bar"></i> Scope & Limitations</li>
+                        <li><i class="fas fa-calendar-alt"></i> Project Timeline & Milestones</li>
+                        <li><i class="fas fa-users"></i> Team Composition & Responsibilities</li>
+                        <li><i class="fas fa-university"></i> Academic Requirements & Context</li>
+                    </ul>
+                    
+                    <p><strong>File Details:</strong></p>
+                    <p>• Format: PDF Document</p>
+                    <p>• Size: ~2.5 MB</p>
+                    <p>• Pages: 15 pages</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objectives Section -->
+    <section id="objectives" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Objectives of the Study</h2>
+                <p>The main and specific objectives guiding the development of TALA LINK system</p>
+            </div>
+            
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Main Objective</h3>
+                    <p>To develop a Patient Information Management and Medical Personnel Scheduling System for the Pediatric Department of Tala Medical Hospital that organizes patient data, enhances scheduling, and improves patient care through technology.</p>
+                </div>
+                
+                <div class="overview-card">
+                    <i class="fas fa-tasks"></i>
+                    <h3>Specific Objectives</h3>
+                    <p>1. Evaluate existing processes and identify challenges<br>
+                    2. Develop centralized patient information module<br>
+                    3. Implement AI-driven clinical decision support<br>
+                    4. Create efficient queuing module</p>
+                </div>
+                
+                <div class="overview-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Evaluation & Assessment</h3>
+                    <p>The system will be evaluated using TAM and ISO 25010 criteria including Functionality, Reliability, Usability, Efficiency, Maintainability, and Security standards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Project Team</h2>
+                <p>BSIT-4J Students from Quezon City University</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>Shaila Mae A. Oque</h4>
+                    <div class="member-role">Project Leader</div>
+                    <p>Lead developer and project coordinator</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>Clarence Ordejon</h4>
+                    <div class="member-role">Co-Developer</div>
+                    <p>System architecture and backend development</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h4>Mr. Geovanni Jomoc</h4>
+                    <div class="member-role">Project Adviser</div>
+                    <p>Capstone Project and Research Adviser</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>BSIT-4J Team</h4>
+                    <div class="member-role">Development Team</div>
+                    <p>Abe, Bacule, Casimero, Constantino, Cruz, Ecleo, Hipolito, Malapote, Perma, Reyes, Victoriano</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">TALA<span>LINK</span></div>
+                    <p>Patient Information Management and Medical Personnel Scheduling System for the Pediatrics Department. A Capstone Project by BSIT-4J students from Quezon City University.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#overview">Project Overview</a></li>
+                        <li><a href="#features">System Features</a></li>
+                        <li><a href="#demo">Demo Video</a></li>
+                        <li><a href="#pdf">Proposal</a></li>
+                        <li><a href="#objectives">Objectives</a></li>
+                        <li><a href="#team">Project Team</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact Information</h4>
+                    <p><i class="fas fa-envelope"></i> oqueshaila@gmail.com</p>
+                    <p><i class="fas fa-envelope"></i> clarence.pinoy@gmail.com</p>
+                    <p><i class="fas fa-university"></i> Quezon City University</p>
+                    <p><i class="fas fa-users"></i> SBIT-4J Capstone Project</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 TALA LINK - Patient Information Management and Medical Personnel Scheduling System. All rights reserved.</p>
+                <p>This project is for academic purposes as part of the BSIT Capstone Project requirements.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        const navLinks = document.querySelectorAll('#mainNav a');
+
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            mainNav.classList.toggle('active');
+            
+            // Change icon
+            const icon = this.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mainNav.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mainNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mainNav.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Smooth scrolling for anchor links with offset for mobile header
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - headerHeight - 10;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Video error handling
+        const video = document.querySelector('video');
+        if (video) {
+            video.addEventListener('error', function(e) {
+                console.log('Error loading video:', e);
+                const container = document.querySelector('.video-container');
+                if (container) {
+                    container.innerHTML = `
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; padding: 20px; text-align: center;">
+                            <i class="fas fa-exclamation-triangle" style="font-size: 50px; margin-bottom: 15px;"></i>
+                            <h3 style="font-size: 1.2rem; margin-bottom: 10px;">Video Cannot Be Loaded</h3>
+                            <p style="font-size: 0.9rem; margin-bottom: 15px;">Please check if the video file exists at: index/System.mp4</p>
+                        </div>
+                    `;
+                }
+            });
+        }
+
+        // Prevent default touch behavior
+        document.addEventListener('touchmove', function(e) {
+            if (e.scale !== 1) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+    </script>
+</body>
+</html>
